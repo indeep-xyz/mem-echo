@@ -1,7 +1,7 @@
 mem-echo
 =====
 
-this shell script hold the text data from STDIN. the held data is echoed to pipe file by user signals.
+this shell script hold the text data from STDIN. the held data is echoed to named pipe.
 
 ## USAGE
 
