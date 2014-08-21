@@ -13,4 +13,9 @@ PID="`cat $MY_PID`"
 # - - - - - - - - - - - - - - - - - - - -
 # main
 
+# guard
+# - require PID data
+[ -z "$PID" ] && exit 1
+
+# pass the interrupt signal to mem-echo
 kill -INT $PID

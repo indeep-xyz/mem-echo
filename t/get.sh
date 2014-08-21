@@ -13,10 +13,16 @@ PID="`cat $MY_PID`"
 # - - - - - - - - - - - - - - - - - - - -
 # main
 
-cat <$MY_PIPE &
+# guard
+# - require PID data
+[ -z "$PID" ] && exit 1
 
+# pass the user signal to mem-echo
 if [ "$1" = "1" ]; then
   kill -SIGUSR1 $PID
 else
   kill -SIGUSR2 $PID
 fi
+
+# echo from pipe file
+cat <$MY_PIPE

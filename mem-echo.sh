@@ -60,12 +60,12 @@ Usage:
     {SourceText} | mem-echo {PipeFilePath} {PidFilePath}
 
   get text (random a line)
-    cat <{PipeFilePath} &
     kill -SIGUSR1 {PidOfRunningMemEcho}
+    cat <{PipeFilePath}
 
   get text (full text)
-    cat <{PipeFilePath} &
     kill -SIGUSR2 {PidOfRunningMemEcho}
+    cat <{PipeFilePath}
 
   stop
     kill -INT {PidOfRunningMemEcho}

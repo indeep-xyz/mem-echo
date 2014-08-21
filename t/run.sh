@@ -24,4 +24,5 @@ TEXT="`create_text`"
 # - - - - - - - - - - - - - - - - - - - -
 # main
 
+# run as daemon
 echo -e "$TEXT" | "$MEM_ECHO" "$MY_PIPE" "$MY_PID"
