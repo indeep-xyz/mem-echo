@@ -5,23 +5,20 @@
 
 MY_DIR="`readlink -f "$0" | sed 's!/[^/]*$!!'`"
 MY_PIPE="$MY_DIR/mypipe"
-MY_PID="$MY_DIR/pid"
 MEM_ECHO="$MY_DIR/../mem-echo.sh"
-
-PID="`cat $MY_PID`"
 
 # - - - - - - - - - - - - - - - - - - - -
 # main
 
 # guard
-# - require PID data
-[ -z "$PID" ] && exit 1
+# - require PIPE file
+[ ! -p "$MY_PIPE" ] && exit 1
 
 # pass the user signal to mem-echo
 if [ "$1" = "1" ]; then
-  kill -SIGUSR1 $PID
+  echo 1 >$MY_PIPE
 else
-  kill -SIGUSR2 $PID
+  echo 0 >$MY_PIPE
 fi
 
 # echo from pipe file

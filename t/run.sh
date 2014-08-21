@@ -16,7 +16,6 @@ create_text() {
 
 MY_DIR="`readlink -f "$0" | sed 's!/[^/]*$!!'`"
 MY_PIPE="$MY_DIR/mypipe"
-MY_PID="$MY_DIR/pid"
 MEM_ECHO="$MY_DIR/../mem-echo.sh"
 
 TEXT="`create_text`"
@@ -25,4 +24,4 @@ TEXT="`create_text`"
 # main
 
 # run as daemon
-echo -e "$TEXT" | "$MEM_ECHO" "$MY_PIPE" "$MY_PID"
+echo -e "$TEXT" | "$MEM_ECHO" "$MY_PIPE"
