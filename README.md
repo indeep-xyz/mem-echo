@@ -8,17 +8,17 @@ this shell script hold the text data from STDIN. the held data is echoed to pipe
 ### run
 
 ```
-{SourceText} | mem-echo {PipeFilePath} {PidFilePath}
+{SourceText} | mem-echo {PipeFilePath}
 ```
 
 ### get text
 
 ```
 # random a line
-kill -SIGUSR1 {PidOfRunningMemEcho}
+echo 1 > {PipeFilePath}
 
 # full text
-kill -SIGUSR2 {PidOfRunningMemEcho}
+echo 0 > {PipeFilePath}
 
 cat <{PipeFilePath}
 ```
@@ -26,7 +26,7 @@ cat <{PipeFilePath}
 ### stop
 
 ```
-kill -INT {PidOfRunningMemEcho}
+echo {OtherString} > {PipeFilePath}
 ```
 
 ## AUTHOR
